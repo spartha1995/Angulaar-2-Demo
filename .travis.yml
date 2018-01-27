@@ -1,0 +1,13 @@
+language: csharp 
+dist: trusty
+os: linux
+mono: none
+before_install:
+- npm install -g npm
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+install:
+- dotnet restore ./Angular2Demo/Angular2Demo.sln
+- cd ./Angular2Demo/src/Angular2Demo && npm install && cd ../../../
+script:
+- dotnet build ./Angular2Demo/Angular2Demo.sln
